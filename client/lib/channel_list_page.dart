@@ -6,8 +6,14 @@ import 'channel_page.dart';
 class ChannelListPage extends StatefulWidget {
   final ChatApi api;
   final String nickname;
+  final VoidCallback? onNicknameChanged;
 
-  const ChannelListPage({super.key, required this.api, required this.nickname});
+  const ChannelListPage({
+    super.key,
+    required this.api,
+    required this.nickname,
+    this.onNicknameChanged,
+  });
 
   @override
   State<ChannelListPage> createState() => _ChannelListPageState();
@@ -92,7 +98,17 @@ class _ChannelListPageState extends State<ChannelListPage> {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
-      appBar: AppBar(title: const Text('Channels')),
+      appBar: AppBar(
+        title: const Text('Channels'),
+        actions: [
+          if (widget.onNicknameChanged != null)
+            IconButton(
+              icon: const Icon(Icons.person),
+              tooltip: 'Change name',
+              onPressed: widget.onNicknameChanged,
+            ),
+        ],
+      ),
       body: _loading
           ? const Center(child: CircularProgressIndicator())
           : _channels.isEmpty
