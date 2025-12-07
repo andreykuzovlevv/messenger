@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:client/chat_api.dart';
 import 'package:flutter/material.dart';
+import 'package:messenger/chat_api.dart';
 import 'package:shared/shared.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 

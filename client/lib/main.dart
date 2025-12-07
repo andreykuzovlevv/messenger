@@ -1,4 +1,4 @@
-import 'package:client/channel_list_page.dart';
+import 'package:messenger/channel_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'chat_api.dart'; // your existing ChatApi
@@ -22,7 +22,9 @@ class App extends StatefulWidget {
 
 class AppState extends State<App> {
   // change URL if your backend is different
-  final ChatApi _api = ChatApi('http://localhost:8080');
+  final ChatApi _api = ChatApi(
+    'https://messenger-backend-918034678836.europe-north1.run.app',
+  );
   String? _nickname;
 
   @override
